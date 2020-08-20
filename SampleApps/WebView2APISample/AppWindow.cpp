@@ -68,13 +68,13 @@ AppWindow::AppWindow(
 
     SetWindowLongPtr(m_mainWindow, GWLP_USERDATA, (LONG_PTR)this);
 
-    //! [TextScaleChanged1]
-    if (winrt::try_get_activation_factory<winrt::Windows::UI::ViewManagement::UISettings>())
-    {
-        m_uiSettings = winrt::Windows::UI::ViewManagement::UISettings();
-        m_uiSettings.TextScaleFactorChanged({ this, &AppWindow::OnTextScaleChanged });
-    }
-    //! [TextScaleChanged1]
+    // //! [TextScaleChanged1]
+    // if (winrt::try_get_activation_factory<winrt::Windows::UI::ViewManagement::UISettings>())
+    // {
+    //     m_uiSettings = winrt::Windows::UI::ViewManagement::UISettings();
+    //     m_uiSettings.TextScaleFactorChanged({ this, &AppWindow::OnTextScaleChanged });
+    // }
+    // //! [TextScaleChanged1]
 
     if (shouldHaveToolbar)
     {
@@ -1064,16 +1064,16 @@ HRESULT AppWindow::CreateWinCompCompositor()
     return hr;
 }
 
-//! [TextScaleChanged2]
-void AppWindow::OnTextScaleChanged(
-    winrt::Windows::UI::ViewManagement::UISettings const& settings,
-    winrt::Windows::Foundation::IInspectable const& args)
-{
-    RunAsync([this] {
-        m_toolbar.UpdateDpiAndTextScale();
-    });
-}
-//! [TextScaleChanged2]
+// //! [TextScaleChanged2]
+// void AppWindow::OnTextScaleChanged(
+//     winrt::Windows::UI::ViewManagement::UISettings const& settings,
+//     winrt::Windows::Foundation::IInspectable const& args)
+// {
+//     RunAsync([this] {
+//         m_toolbar.UpdateDpiAndTextScale();
+//     });
+// }
+// //! [TextScaleChanged2]
 void AppWindow::UpdateCreationModeMenu()
 {
     HMENU hMenu = GetMenu(m_mainWindow);
@@ -1090,7 +1090,7 @@ double AppWindow::GetDpiScale()
     return DpiUtil::GetDpiForWindow(m_mainWindow) * 1.0f / USER_DEFAULT_SCREEN_DPI;
 }
 
-double AppWindow::GetTextScale()
-{
-    return m_uiSettings ? m_uiSettings.TextScaleFactor() : 1.0f;
-}
+// double AppWindow::GetTextScale()
+// {
+//     return m_uiSettings ? m_uiSettings.TextScaleFactor() : 1.0f;
+// }
